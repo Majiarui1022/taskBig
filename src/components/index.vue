@@ -23,7 +23,11 @@
                       <div
                         class="cal"
                         v-for="(item,index) in Running"
+<<<<<<< HEAD
                         v-if="index < (inx + 1) * 5 && index >= inx * 5"
+=======
+                        v-if="index < (inx + 1) * 6 && index >= inx * 6"
+>>>>>>> 174d847d3469f11d4a3ff84c074a7de5821ffe0f
                         v-bind:key="index"
                         :class="asdasdasd(item.plan_end_time) === 2 ? 'Red' :  
 															 asdasdasd(item.plan_end_time) === 3 ? 'Blue' :
@@ -31,8 +35,13 @@
                       >
                         <img src="../assets/run.png" alt />
                         <div class="info">
+<<<<<<< HEAD
                           <div class="name">{{item.task}}</div>
                           <div class="name-t">{{item.project}}</div>
+=======
+                          <div class="name">{{item.project}}</div>
+                          <div class="name-t">{{item.task}}</div>
+>>>>>>> 174d847d3469f11d4a3ff84c074a7de5821ffe0f
                           <div class="but-task">
                             <div class="time">{{item.plan_start_time}} 至 {{item.plan_end_time}}</div>
                             <div class="pro-per">{{nameBu}} {{item.user_name}}</div>
@@ -60,7 +69,11 @@
                       <div
                         class="cal"
                         v-for="(item,index) in NoRunning"
+<<<<<<< HEAD
                         v-if="index < (inx + 1) * 5 && index >= inx * 5"
+=======
+                        v-if="index < (inx + 1) * 6 && index >= inx * 6"
+>>>>>>> 174d847d3469f11d4a3ff84c074a7de5821ffe0f
                         v-bind:key="index"
                         :class="asdasdasd(item.plan_end_time) === 2 ? 'Red' :  
 															 asdasdasd(item.plan_end_time) === 3 ? 'Blue' :
@@ -68,8 +81,13 @@
                       >
                         <img src="../assets/norun.png" alt />
                         <div class="info">
+<<<<<<< HEAD
                           <div class="name">{{item.task}}</div>
                           <div class="name-t">{{item.project}}</div>
+=======
+                          <div class="name">{{item.project}}</div>
+                          <div class="name-t">{{item.task}}</div>
+>>>>>>> 174d847d3469f11d4a3ff84c074a7de5821ffe0f
                           <div class="but-task">
                             <div class="time">{{item.plan_start_time}} 至 {{item.plan_end_time}}</div>
                             <div class="pro-per">{{nameBu}} {{item.user_name}}</div>
@@ -97,13 +115,22 @@
                       <div
                         class="cal"
                         v-for="(item,index) in yesDayList"
+<<<<<<< HEAD
                         v-if="index < (inx + 1) * 5 && index >= inx * 5"
+=======
+                        v-if="index < (inx + 1) * 6 && index >= inx * 6"
+>>>>>>> 174d847d3469f11d4a3ff84c074a7de5821ffe0f
                         v-bind:key="index"
                       >
                         <img src="../assets/success.png" alt />
                         <div class="info">
+<<<<<<< HEAD
                           <div class="name">{{item.task}}</div>
                           <div class="name-t">{{item.project}}</div>
+=======
+                          <div class="name">{{item.project}}</div>
+                          <div class="name-t">{{item.task}}</div>
+>>>>>>> 174d847d3469f11d4a3ff84c074a7de5821ffe0f
                           <div class="but-task">
                             <div class="time">{{item.plan_start_time}} 至 {{item.plan_end_time}}</div>
                             <div class="pro-per">{{nameBu}} {{item.user_name}}</div>
@@ -322,28 +349,49 @@ export default {
     //计算进行中页数
     RunningLeng() {
       if (this.Running.length) {
+<<<<<<< HEAD
         if ((this.Running.length / 5) % 1 === 0) {
           return this.Running.length / 5;
         } else {
           return Math.floor(this.Running.length / 5) + 1;
+=======
+        if ((this.Running.length / 6) % 1 === 0) {
+          return this.Running.length / 6;
+        } else {
+          return Math.floor(this.Running.length / 6) + 1;
+>>>>>>> 174d847d3469f11d4a3ff84c074a7de5821ffe0f
         }
       }
     },
     YerListLeng() {
       if (this.yesDayList.length) {
+<<<<<<< HEAD
         if ((this.yesDayList.length / 5) % 1 === 0) {
           return this.yesDayList.length / 5;
         } else {
           return Math.floor(this.yesDayList.length / 5) + 1;
+=======
+        if ((this.yesDayList.length / 6) % 1 === 0) {
+          return this.yesDayList.length / 6;
+        } else {
+          return Math.floor(this.yesDayList.length / 6) + 1;
+>>>>>>> 174d847d3469f11d4a3ff84c074a7de5821ffe0f
         }
       }
     },
     NorunList() {
       if (this.NoRunning.length) {
+<<<<<<< HEAD
         if ((this.NoRunning.length / 5) % 1 === 0) {
           return this.NoRunning.length / 5;
         } else {
           return Math.floor(this.NoRunning.length / 5) + 1;
+=======
+        if ((this.NoRunning.length / 6) % 1 === 0) {
+          return this.NoRunning.length / 6;
+        } else {
+          return Math.floor(this.NoRunning.length / 6) + 1;
+>>>>>>> 174d847d3469f11d4a3ff84c074a7de5821ffe0f
         }
       }
     },
@@ -495,7 +543,11 @@ $height: 10.8rem;
               height: 100%;
               .cal {
                 width: 5.82rem;
+<<<<<<< HEAD
                 height: 1.4rem;
+=======
+                height: 1.2rem;
+>>>>>>> 174d847d3469f11d4a3ff84c074a7de5821ffe0f
                 background: linear-gradient(
                   90deg,
                   rgba(65, 161, 247, 1) 0%,
@@ -518,6 +570,7 @@ $height: 10.8rem;
                   width: calc(100% - 0.57rem);
                   height: 100%;
                   .name {
+<<<<<<< HEAD
                     font-size: 0.24rem;
                     font-weight: bold;
                     color: rgba(234, 248, 248, 1);
@@ -531,6 +584,21 @@ $height: 10.8rem;
                   .but-task {
                     display: flex;
                     font-size: 0.2rem;
+=======
+                    font-size: 0.22rem;
+                    font-weight: bold;
+                    color: rgba(234, 248, 248, 1);
+                    line-height: 0.32rem;
+                  }
+                  .name-t {
+                    font-size: 0.18rem;
+                    color: rgba(234, 248, 248, 1);
+                    line-height: 0.34rem;
+                  }
+                  .but-task {
+                    display: flex;
+                    font-size: 0.18rem;
+>>>>>>> 174d847d3469f11d4a3ff84c074a7de5821ffe0f
                     color: rgba(234, 248, 248, 1);
                     line-height: 0.3rem;
                     justify-content: space-between;
