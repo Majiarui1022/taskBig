@@ -1,6 +1,6 @@
 <template>
-  <div class="box">
-    <div class="index">
+  <div class="box-boss">
+    <div class="index-boss">
       <div class="tit">
         <span>{{nameBu}}任务大屏</span>
         <p
@@ -9,13 +9,115 @@
       </div>
       <div class="menu">
         <div class="menu-pad">
+          <div class="nemu-tit">
+            <!-- Swiper -->
+                <div class="swiper-container">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+
+                      <div class="bu-fa yunying">
+                        <div class="bu-tit">
+                          <span></span>
+                          <p v-if="allRole[0]">{{allRole[0].name}}</p>
+                        </div>
+                        <div class="bu-cont">
+                          <div class="bu-left" >
+                            <div class="num" v-if="allRole[0]">{{allRole[0].count}}</div>
+                            <div class="img"><img src="../assets/yuny.png" alt=""></div>
+                            <div class="name">每月新增任务</div>
+                          </div>
+                          <div class="bu-right">
+                             <div class="num" v-if="allRole[0]">{{allRole[0].percent}}</div>
+                            <div class="img"><img src="../assets/yuny.png" alt=""></div>
+                            <div class="name">任务完成率</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="bu-fa xiaoshou">
+                        <div class="bu-tit">
+                          <span></span>
+                          <p v-if="allRole[1]">{{allRole[1].name}}</p>
+                        </div>
+                        <div class="bu-cont">
+                          <div class="bu-left" >
+                            <div class="num" v-if="allRole[1]">{{allRole[1].count}}</div>
+                            <div class="img"><img src="../assets/shopp.png" alt=""></div>
+                            <div class="name">每月新增任务</div>
+                          </div>
+                          <div class="bu-right">
+                             <div class="num" v-if="allRole[1]">{{allRole[1].percent}}</div>
+                            <div class="img"><img src="../assets/shopp.png" alt=""></div>
+                            <div class="name">任务完成率</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="bu-fa xiangmu">
+                        <div class="bu-tit">
+                          <span></span>
+                          <p v-if="allRole[2]">{{allRole[2].name}}</p>
+                        </div>
+                        <div class="bu-cont">
+                          <div class="bu-left" >
+                            <div class="num" v-if="allRole[2]">{{allRole[2].count}}</div>
+                            <div class="img"><img src="../assets/project.png" alt=""></div>
+                            <div class="name">每月新增任务</div>
+                          </div>
+                          <div class="bu-right">
+                             <div class="num" v-if="allRole[2]">{{allRole[2].percent}}</div>
+                            <div class="img"><img src="../assets/project.png" alt=""></div>
+                            <div class="name">任务完成率</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="bu-fa chanpin">
+                          <div class="bu-tit">
+                          <span></span>
+                          <p v-if="allRole[3]">{{allRole[3].name}}</p>
+                        </div>
+                        <div class="bu-cont">
+                          <div class="bu-left" >
+                            <div class="num" v-if="allRole[3]">{{allRole[3].count}}</div>
+                            <div class="img"><img src="../assets/chan.png" alt=""></div>
+                            <div class="name">每月新增任务</div>
+                          </div>
+                          <div class="bu-right">
+                             <div class="num" v-if="allRole[3]">{{allRole[3].percent}}</div>
+                            <div class="img"><img src="../assets/chan.png" alt=""></div>
+                            <div class="name">任务完成率</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="bu-fa yanfa">
+                         <div class="bu-tit">
+                          <span></span>
+                          <p v-if="allRole[4]">{{allRole[4].name}}</p>
+                        </div>
+                        <div class="bu-cont">
+                          <div class="bu-left" >
+                            <div class="num" v-if="allRole[4]">{{allRole[4].count}}</div>
+                            <div class="img"><img src="../assets/yanfa.png" alt=""></div>
+                            <div class="name">每月新增任务</div>
+                          </div>
+                          <div class="bu-right">
+                             <div class="num" v-if="allRole[4]">{{allRole[4].percent}}</div>
+                            <div class="img"><img src="../assets/yanfa.png" alt=""></div>
+                            <div class="name">任务完成率</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      
+                    </div>
+                  </div>
+                </div>
+          </div>
           <div class="cont">
             <div class="row">
               <div class="row-tit">
                 <img src="../assets/running.png" alt />
                 <span>每日工作({{this.Running.length}})</span>
               </div>
-              <div class="row-con">
+              <div class="row-con row-menu">
                 <!-- Swiper -->
                 <div class="swiper-container">
                   <div class="swiper-wrapper">
@@ -23,7 +125,7 @@
                       <div
                         class="cal"
                         v-for="(item,index) in Running"
-                        v-if="index < (inx + 1) * 5 && index >= inx * 5"
+                        v-if="index < (inx + 1) * 4 && index >= inx * 4"
                         v-bind:key="index"
                         :class="
                               item.stat == 3 ? 'Green' :
@@ -38,48 +140,7 @@
                           <div class="name-t">{{item.project}}</div>
                           <div class="but-task">
                             <div class="time">{{item.plan_start_time}} 至 {{item.plan_end_time}}</div>
-                            <div class="pro-per">{{nameBu}} {{item.user_name}}</div>
-                          </div>
-                          <div class="address"><img src="../assets/address.png" alt=""> {{item.address}}</div>
-                        </div>
-                        <div class="header-img" v-if="item.head">
-                          <img :src="item.head" alt="">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Add Pagination -->
-                  <div class="swiper-pagination"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="row-tit">
-                <img src="../assets/clarun.png" alt />
-                <span>待进行({{this.NoRunning.length}})</span>
-              </div>
-              <div class="row-con">
-                <!-- Swiper -->
-                <div class="swiper-container">
-                  <div class="swiper-wrapper">
-                    <div class="swiper-slide" v-for="(val,inx) in NorunList" v-bind:key="inx">
-                      <div
-                        class="cal"
-                        v-for="(item,index) in NoRunning"
-                        v-if="index < (inx + 1) * 5 && index >= inx * 5"
-                        v-bind:key="index"
-                        :class="asdasdasd(item.plan_end_time) === 2 ? 'Red' :  
-															 asdasdasd(item.plan_end_time) === 3 ? 'Blue' :
-															 asdasdasd(item.plan_end_time) === 4 ? 'Yellow' : 'Blue'"
-                      >
-                        <img src="../assets/norun.png" alt />
-                        <div class="info">
-                          <div class="name">{{item.task}}</div>
-                          <div class="name-t">{{item.project}}</div>
-                          <div class="but-task">
-                            <div class="time">{{item.plan_start_time}} 至 {{item.plan_end_time}}</div>
-                            <div class="pro-per">{{nameBu}} {{item.user_name}}</div>
+                            <div class="pro-per">{{item.role}} {{item.user_name}}</div>
                           </div>
                           <div class="address"><img src="../assets/address.png" alt=""> {{item.address}}</div>
                         </div>
@@ -97,10 +158,51 @@
 
             <div class="row">
               <div class="row-tit">
-                <img src="../assets/suctsk.png" alt />
-                <span>昨日完成({{this.yesDayList.length}})</span>
+                <img src="../assets/clarun.png" alt />
+                <span>待进行({{this.NoRunning.length}})</span>
               </div>
-              <div class="row-con">
+              <div class="row-con row-menu">
+                <!-- Swiper -->
+                <div class="swiper-container">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-for="(val,inx) in NorunList" v-bind:key="inx">
+                      <div
+                        class="cal"
+                        v-for="(item,index) in NoRunning"
+                        v-if="index < (inx + 1) * 4 && index >= inx * 4"
+                        v-bind:key="index"
+                        :class="asdasdasd(item.plan_end_time) === 2 ? 'Red' :  
+															 asdasdasd(item.plan_end_time) === 3 ? 'Blue' :
+															 asdasdasd(item.plan_end_time) === 4 ? 'Yellow' : 'Blue'"
+                      >
+                        <img src="../assets/norun.png" alt />
+                        <div class="info">
+                          <div class="name">{{item.task}}</div>
+                          <div class="name-t">{{item.project}}</div>
+                          <div class="but-task">
+                            <div class="time">{{item.plan_start_time}} 至 {{item.plan_end_time}}</div>
+                            <div class="pro-per">{{item.role}} {{item.user_name}}</div>
+                          </div>
+                          <div class="address"><img src="../assets/address.png" alt=""> {{item.address}}</div>
+                        </div>
+                         <div class="header-img" v-if="item.head">
+                          <img :src="item.head" alt="">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Add Pagination -->
+                  <div class="swiper-pagination"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="row-tit">
+                <img src="../assets/notask.png" alt />
+                <span>超时未完成({{this.yesDayList.length}})</span>
+              </div>
+              <div class="row-con row-menu">
                 <!-- Swiper -->
                 <div class="swiper-container">
                   <div class="swiper-wrapper">
@@ -108,16 +210,17 @@
                       <div
                         class="cal"
                         v-for="(item,index) in yesDayList"
-                        v-if="index < (inx + 1) * 5 && index >= inx * 5"
+                        v-if="index < (inx + 1) * 4 && index >= inx * 4"
                         v-bind:key="index"
                       >
-                        <img src="../assets/success.png" alt />
+                        <img  :src="item.stat == 2 ? RunningImg :
+                           item.stat == 1 ? NORunningImg :''" alt />
                         <div class="info">
                           <div class="name">{{item.task}}</div>
                           <div class="name-t">{{item.project}}</div>
                           <div class="but-task">
                             <div class="time">{{item.plan_start_time}} 至 {{item.plan_end_time}}</div>
-                            <div class="pro-per">{{nameBu}} {{item.user_name}}</div>
+                            <div class="pro-per">{{item.role}} {{item.user_name}}</div>
                           </div>
                           <div class="address"><img src="../assets/address.png" alt=""> {{item.address}}</div>
                         </div>
@@ -160,8 +263,10 @@ export default {
         week: "5"
       },
       nameBu: "",
-      //  
+      allRole:[],
+      contNum : 0,   //记录十分钟之后刷新
       RunningImg : require('../assets/run.png'),
+      NORunningImg : require('../assets/norun.png'),
       SucImg : require('../assets/success.png')
     };
   },
@@ -184,6 +289,12 @@ export default {
     },
     async setNowTimes() {
       let myDate = new Date();
+      this.contNum++;
+      console.log(this.contNum)
+      if(this.contNum > 600){
+        this.contNum = 0;
+        this.reload();
+      }
       // console.log(myDate.toLocaleDateString()) //获取当前日期)
       // console.log(myDate.toLocaleTimeString()); //获取当前时间
       this.nowTimes.year = myDate.getFullYear(); //获取完整的年份(4位)
@@ -224,42 +335,42 @@ export default {
       // clearInterval(this.tiemr)
     },
 
-    initWebSocket() {
-      const wsuri = `wss://www.kongfushidai.cn/wx/role/${
-        this.$route.query.id
-          ? this.$route.query.id
-          : sessionStorage.getItem("role")
-      }/?${
-        localStorage.getItem("jp_token") ? localStorage.getItem("jp_token") : ""
-      }`;
-      this.websock = new WebSocket(wsuri); //这里面的this都指向vue
-      this.websock.onopen = this.websocketopen;
-      this.websock.onmessage = this.websocketonmessage;
-      this.websock.onclose = this.websocketclose;
-      this.websock.onerror = this.websocketerror;
-    },
-    websocketopen() {
-      //打开
-      console.log("WebSocket连接成功");
-    },
-    websocketonmessage(e) {
-      //数据接收
-      let ObjData = JSON.parse(e.data);
-      console.log(ObjData);
-      console.log("收到");
-      if (ObjData.text == "update") {
-        this.websock.close();
-        this.reload();
-      }
-    },
-    websocketclose() {
-      //关闭
-      console.log("WebSocket关闭");
-    },
-    websocketerror() {
-      //失败
-      console.log("WebSocket连接失败");
-    }
+    // initWebSocket() {
+    //   const wsuri = `wss://www.kongfushidai.cn/wx/role/${
+    //     this.$route.query.id
+    //       ? this.$route.query.id
+    //       : sessionStorage.getItem("role")
+    //   }/?${
+    //     localStorage.getItem("jp_token") ? localStorage.getItem("jp_token") : ""
+    //   }`;
+    //   this.websock = new WebSocket(wsuri); //这里面的this都指向vue
+    //   this.websock.onopen = this.websocketopen;
+    //   this.websock.onmessage = this.websocketonmessage;
+    //   this.websock.onclose = this.websocketclose;
+    //   this.websock.onerror = this.websocketerror;
+    // },
+    // websocketopen() {
+    //   //打开
+    //   console.log("WebSocket连接成功");
+    // },
+    // websocketonmessage(e) {
+    //   //数据接收
+    //   let ObjData = JSON.parse(e.data);
+    //   console.log(ObjData);
+    //   console.log("收到");
+    //   if (ObjData.text == "update") {
+    //     this.websock.close();
+    //     this.reload();
+    //   }
+    // },
+    // websocketclose() {
+    //   //关闭
+    //   console.log("WebSocket关闭");
+    // },
+    // websocketerror() {
+    //   //失败
+    //   console.log("WebSocket连接失败");
+    // }
   },
   mounted() {
     this.nameBu =
@@ -273,7 +384,7 @@ export default {
         ? "研发中心"
         : this.$route.query.id == 5
         ? "市场销售"
-        : "";
+        : "控福";
     this.setNowTimes();
     this.$nextTick(() => {
       var swiper = new Swiper(".swiper-container", {
@@ -287,81 +398,77 @@ export default {
 
     this.$http
       .get(
-        this.$conf.env.getTaskYesTo +
-          `${
-            this.$route.query.id
-              ? this.$route.query.id
-              : sessionStorage.getItem("role")
-          }`
+        this.$conf.env.getBossSeeTaskYes
       )
       .then(res => {
-        this.yesDayList = res.data.results;
-        console.log(this.yesDayList);
+        // console.log(res)
+        this.yesDayList = res.data;
+        // console.log(this.yesDayList);
       })
       .catch(err => {});
 
     //进行中
     this.$http
       .get(
-        this.$conf.env.getTaskRun +
-          `${
-            this.$route.query.id
-              ? this.$route.query.id
-              : sessionStorage.getItem("role")
-          }`
-      )
+        this.$conf.env.getBossSeeTaskRun)
       .then(res => {
-        this.Running = res.data.results;
-        console.log(this.Running);
+        this.Running = res.data;
+        // console.log(this.Running);
       })
       .catch(err => {});
 
     //待进行
     this.$http
       .get(
-        this.$conf.env.getTaskNoR +
-          `${
-            this.$route.query.id
-              ? this.$route.query.id
-              : sessionStorage.getItem("role")
-          }`
-      )
+        this.$conf.env.getBossSeeTaskNo)
       .then(res => {
-        this.NoRunning = res.data.results;
-        console.log(this.NoRunning);
+        this.NoRunning = res.data;
+        // console.log(this.NoRunning);
       })
       .catch(err => {});
     // console.log(this.websock)
     // if(!this.websock){
     //     this.initWebSocket();
     // }
+
+    //各部门状态
+    this.$http
+      .get(
+        this.$conf.env.AllRoleStatus)
+      .then(res => {
+        // console.log(res.data);
+        this.allRole = res.data
+      })
+      .catch(err => {});
+
+    
   },
   computed: {
     //计算进行中页数
     RunningLeng() {
       if (this.Running.length) {
-        if ((this.Running.length / 5) % 1 === 0) {
-          return this.Running.length / 5;
+        if ((this.Running.length / 4) % 1 === 0) {
+          return this.Running.length / 4;
         } else {
-          return Math.floor(this.Running.length / 5) + 1;
+          return Math.floor(this.Running.length / 4) + 1;
         }
       }
     },
     YerListLeng() {
       if (this.yesDayList.length) {
-        if ((this.yesDayList.length / 5) % 1 === 0) {
-          return this.yesDayList.length / 5;
+        if ((this.yesDayList.length / 4) % 1 === 0) {
+          return this.yesDayList.length / 4;
         } else {
-          return Math.floor(this.yesDayList.length / 5) + 1;
+          return Math.floor(this.yesDayList.length / 4) + 1;
         }
       }
     },
     NorunList() {
       if (this.NoRunning.length) {
-        if ((this.NoRunning.length / 5) % 1 === 0) {
-          return this.NoRunning.length / 5;
+        if ((this.NoRunning.length / 4) % 1 === 0) {
+          return this.NoRunning.length / 4;
         } else {
-          return Math.floor(this.NoRunning.length / 5) + 1;
+          return Math.floor(this.NoRunning.length / 4) + 1;
         }
       }
     },
@@ -379,43 +486,43 @@ export default {
     }
   },
   destroyed() {
-    this.websock.close(); //离开路由之后断开websocket连接
+    // this.websock.close(); //离开路由之后断开websocket连接
+     console.log('销毁');
      clearInterval(this.tiemr);
   },
 
   watch: {
     NorunList(news, olds) {
-      console.log(this.NoRunning.length);
-      console.log(this.$route.query.id);
+      // console.log(this.NoRunning.length);
+      // console.log(this.$route.query.id);
     },
     YerListLeng() {},
     RunningLeng() {},
     GetTimeData(news, olds) {
-      console.log(news);
+      // console.log(news);
     },
     RouterName(news, olds) {
-      console.log(news);
+      // console.log(news);
     },
     TodayMins() {
       this.$nextTick(() => {
-        console.log("修改了");
-        if (this.websock) {
-          this.websock.close();
-          this.websock = undefined;
-          this.$nextTick(() => {
-            this.initWebSocket();
-          });
-        } else {
-          this.initWebSocket();
-        }
+        // console.log("修改了");
+        // if (this.websock) {
+        //   this.websock.close();
+        //   this.websock = undefined;
+        //   this.$nextTick(() => {
+        //     this.initWebSocket();
+        //   });
+        // } else {
+        //   this.initWebSocket();
+        // }
       });
     },
     ToadyTimer(news, old) {
       clearInterval(this.tiemr);
-
+        console.log("清空");
       this.tiemr = setInterval(() => {
         this.setNowTimes();
-        // console.log("清空");
       }, 1000);
     }
   }
@@ -423,14 +530,15 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('../../static/font/font.css');
 $width: 19.2rem;
 $height: 10.8rem;
-.box {
+.box-boss{
   width: 100%;
   height: 100%;
   background: #081029;
 }
-.index {
+.index-boss {
   width: $width;
   height: $height;
   background: #081029;
@@ -438,11 +546,12 @@ $height: 10.8rem;
   box-sizing: border-box;
   margin: 0 auto;
   .tit {
-    width: 100%;
+    width: calc(100% - .4rem);
     height: 0.7rem;
     background: url("../assets/indextit.png") no-repeat;
     background-size: 100% 100%;
     position: relative;
+    margin:0 auto;
     span {
       font-size: 0.34rem;
       color: rgba(18, 151, 236, 1);
@@ -465,16 +574,115 @@ $height: 10.8rem;
     .menu-pad {
       width: 100%;
       height: 100%;
-      padding: 0.16rem 0.2rem;
+      padding: 0 0.2rem;
       box-sizing: border-box;
+      .nemu-tit{
+        width: 100%;
+        height:2rem;
+        margin: .08rem 0;
+        .swiper-container{
+          width: 100%;
+          height: 100%;
+        }
+        .swiper-wrapper{
+          width: 100%;
+          height: 100%;
+        }
+        .swiper-slide{
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: space-between;
+          .yunying{
+              color:rgba(254,96,174,1);
+              span{
+                background:rgba(254,96,174,1);
+              }
+          }
+          .xiaoshou{
+            color:rgba(253,162,63,1);
+             span{
+                background:rgba(253,162,63,1);
+              }
+          }
+          .xiangmu{
+            color:rgba(154,86,255,1);
+             span{
+                background:rgba(154,86,255,1);
+              }
+          }
+          .chanpin{
+            color:rgba(96,245,254,1);
+             span{
+                background:rgba(96,245,254,1);
+              }
+          }
+          .yanfa{
+            color:rgba(0,255,204,1);
+             span{
+                background:rgba(0,255,204,1);
+              }
+          }
+          .bu-fa{
+            width:3.56rem;
+            height:2rem;
+            background:linear-gradient(-45deg,rgba(28,37,88,1) 0%,rgba(16,22,56,1) 100%);
+            border-radius:.01rem;
+            padding: .1rem .14rem;
+            box-sizing: border-box;
+            .bu-tit{
+              width: 100%;
+              display: flex;
+              height: .22rem;
+              align-items: center;
+              span{
+                width:.16rem;
+                height:.16rem;
+                border-radius:50%;
+              }
+              p{
+                font-size:.22rem;
+                font-family:yishu;
+                color:rgba(223,223,223,1);
+                margin-left: .1rem;
+              }
+            }
+            .bu-cont{
+              display: flex;
+              justify-content: space-between;
+              margin-top: .3rem;
+              padding: 0 .1rem;
+              box-sizing: border-box;
+              >div{
+                text-align: center;
+                .num{
+                  font-size:.56rem;
+                  font-family:yishu;
+                  line-height: .56rem;
+                }
+                img{
+                  display: block;
+                  width: 100%;
+                  height: .52rem;
+                }
+                .name{
+                  font-size:.22rem;
+                  font-family:yishu;
+                  line-height: .22rem;
+                }
+              }
+            }
+          }
+        }
+      }
       .cont {
         width: 100%;
-        height: 100%;
+        height: 7.6rem;
         display: flex;
         justify-content: space-between;
         .row {
           width: 6.16rem;
-          height: 9.69rem;
+          height: 7.6rem;
           background: linear-gradient(
             -45deg,
             rgba(16, 22, 56, 1) 0%,
@@ -484,7 +692,7 @@ $height: 10.8rem;
           padding: 0 0.16rem;
           box-sizing: border-box;
           .row-tit {
-            height: 0.74rem;
+            height: 0.6rem;
             width: 100%;
             display: flex;
             align-items: center;
@@ -498,10 +706,16 @@ $height: 10.8rem;
               color: rgba(0, 255, 186, 1);
             }
           }
+          .row-menu{
+              .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets{
+                bottom: -.18rem;
+                left: 0;
+                width: 100%;
+              }
+          }
           .row-con {
             width: 100%;
-            height: calc(100% - 1rem);
-            margin-top: 0.26rem;
+            height: calc(100% - .6rem);
             // .swiper-container{
             //   width: 100%;
             //   height: 100%;
@@ -512,9 +726,8 @@ $height: 10.8rem;
               .cal {
                 width: 5.82rem;
                 height: 1.56rem;
-                background: #0084FF;
+                background: #E70E36;
                 border-radius: 0.2rem;
-                // margin-bottom: 0.16rem;
                 margin: 0 auto 0.16rem;
                 padding: 0.11rem 0.17rem;
                 box-sizing: border-box;
@@ -535,7 +748,7 @@ $height: 10.8rem;
                   .name {
                     font-size: 0.24rem;
                     font-weight: bold;
-                    line-height: 0.4rem;
+                    line-height: 0.34rem;
                     width: 100%;
                     overflow: hidden;
                     white-space: nowrap;
@@ -543,7 +756,8 @@ $height: 10.8rem;
                   }
                   .name-t {
                     font-size: 0.2rem;
-                    line-height: 0.3rem;
+                    line-height: .3rem;
+                    // line-height: 0.5rem;
                   }
                   .but-task {
                     display: flex;
@@ -553,12 +767,12 @@ $height: 10.8rem;
                     align-items: center;
                   }
                   .address{
-                    width: 100%;
-                    overflow: hidden;
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
-                    font-size:.18rem;
-                    line-height:.3rem;
+                     width: 100%;
+                      overflow: hidden;
+                      white-space: nowrap;
+                      text-overflow: ellipsis;
+                      font-size:.18rem;
+                      line-height:.3rem;
                     img{
                       width:.22rem;
                       height:.25rem;
@@ -584,14 +798,14 @@ $height: 10.8rem;
                     margin: 0 auto;
                   }
                 }
-                &.Green {
+                 &.Green {
                   // background: linear-gradient(
                   //   90deg,
                   //   rgba(34, 177, 214, 1) 0%,
                   //   rgba(63, 225, 174, 1) 100%
                   // );
                   // box-shadow: 0px 2px 14px 0px rgba(34, 177, 214, 0.57);
-                  background: #18ae49;
+                  background: #00d13b;
                 }
                 &.Red {
                   // background: linear-gradient(
@@ -621,9 +835,6 @@ $height: 10.8rem;
                   background: #0084FF;
                 }
               }
-            }
-            .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets{
-              bottom: -.2rem;
             }
             .swiper-slide {
               background-position: center;

@@ -103,6 +103,12 @@ export default {
       localStorage.setItem('jp_token',res.data.token)
       console.log(res.data.role)
       // return;
+      if(this.ruleForm.value == 999){
+         this.$router.push({
+          name:'boss',
+        })
+      return;
+      }
       this.$router.push({
         name:'index',
         query :{
@@ -118,7 +124,12 @@ export default {
       .get(this.$conf.env.logoGet)
       .then(res => {
         console.log(res.data);
+
         this.options = res.data;
+        this.options.push({
+          id: 999,
+          name: "控福任务大屏"
+        })
       })
       .catch(err => {});
   }

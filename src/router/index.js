@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import login from '@/components/login'
 import index from '@/components/index'
+import boss from '@/components/boss'
+
 
 Vue.use(Router)
 
@@ -16,6 +18,11 @@ export default new Router({
       path: '/index',
       name: 'index',
       component: index
+    },
+    {
+      path: '/boss',
+      name: 'boss',
+      component: boss
     }
   ]
 })
