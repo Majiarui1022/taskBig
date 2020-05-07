@@ -38,9 +38,15 @@
                           <div class="name-t">{{item.project}}</div>
                           <div class="but-task">
                             <div class="time">{{item.plan_start_time}} 至 {{item.plan_end_time}}</div>
+                             <!-- <div class="pro-per">{{nameBu}} {{item.user_name}}</div> -->
+                          </div>
+                          <div class="address">
+                            <div class="address-info">
+                              <img src="../assets/address.png" alt=""> 
+                              {{item.address}}
+                            </div>
                             <div class="pro-per">{{nameBu}} {{item.user_name}}</div>
                           </div>
-                          <div class="address"><img src="../assets/address.png" alt=""> {{item.address}}</div>
                         </div>
                         <div class="header-img" v-if="item.head">
                           <img :src="item.head" alt="">
@@ -79,9 +85,15 @@
                           <div class="name-t">{{item.project}}</div>
                           <div class="but-task">
                             <div class="time">{{item.plan_start_time}} 至 {{item.plan_end_time}}</div>
+                            <!-- <div class="pro-per">{{nameBu}} {{item.user_name}}</div> -->
+                          </div>
+                          <div class="address">
+                            <div class="address-info">
+                              <img src="../assets/address.png" alt=""> 
+                              {{item.address}}
+                            </div>
                             <div class="pro-per">{{nameBu}} {{item.user_name}}</div>
                           </div>
-                          <div class="address"><img src="../assets/address.png" alt=""> {{item.address}}</div>
                         </div>
                          <div class="header-img" v-if="item.head">
                           <img :src="item.head" alt="">
@@ -117,9 +129,15 @@
                           <div class="name-t">{{item.project}}</div>
                           <div class="but-task">
                             <div class="time">{{item.plan_start_time}} 至 {{item.plan_end_time}}</div>
+                            <!-- <div class="pro-per">{{nameBu}} {{item.user_name}}</div> -->
+                          </div>
+                          <div class="address">
+                            <div class="address-info">
+                              <img src="../assets/address.png" alt=""> 
+                              {{item.address}}
+                            </div>
                             <div class="pro-per">{{nameBu}} {{item.user_name}}</div>
                           </div>
-                          <div class="address"><img src="../assets/address.png" alt=""> {{item.address}}</div>
                         </div>
                          <div class="header-img" v-if="item.head">
                           <img :src="item.head" alt="">
@@ -522,7 +540,6 @@ $height: 10.8rem;
                 justify-content: space-between;
                 color: #FFFFFF;
                 position: relative;
-                border-bottom-left-radius: .3rem;
                 img {
                   width: 0.4rem;
                   height: 0.4rem;
@@ -559,18 +576,27 @@ $height: 10.8rem;
                     text-overflow: ellipsis;
                     font-size:.18rem;
                     line-height:.3rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
                     img{
                       width:.22rem;
                       height:.25rem;
                       margin: 0;
                       vertical-align: middle;
                     }
+                    .address-info{
+                      width: 3.2rem;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      white-space: nowrap;
+                    }
                   }
                 }
                 .header-img{
                   position: absolute;
-                  left: 0;
-                  bottom:0;
+                  right: .42rem;
+                  bottom:.46rem;
                   width: .58rem;
                   height: .58rem;
                   box-sizing: border-box;
