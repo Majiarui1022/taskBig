@@ -4,7 +4,7 @@
       <div class="tit">
         <span>{{nameBu}}任务大屏</span>
         <p
-          v-if="nowTimes"
+          v-show="nowTimes"
         >{{nowTimes.year}}年{{nowTimes.yy}}月{{nowTimes.dd}}日 &nbsp;&nbsp;&nbsp;&nbsp; 星期{{nowTimes.week}} &nbsp;&nbsp;&nbsp; {{nowTimes.hou}}:{{nowTimes.min}}:{{nowTimes.sec}}</p>
       </div>
       <div class="menu">
@@ -18,34 +18,34 @@
                       <div class="bu-fa yunying">
                         <div class="bu-tit">
                           <span></span>
-                          <p v-if="allRole[0]">{{allRole[0].name}}</p>
+                          <p v-show="allRole[0]">{{allRole[0].name}}</p>
                         </div>
                         <div class="bu-cont">
                           <div class="bu-left" >
-                            <div class="num" v-if="allRole[0]">{{allRole[0].count}}</div>
-                            <div class="img"><img src="../assets/yuny.png" alt=""></div>
+                            <div class="num" v-show="allRole[0]">{{allRole[0].count}}</div>
+                            <div class="img"><img src="" alt=""></div>
                             <div class="name">每月新增任务</div>
                           </div>
                           <div class="bu-right">
-                             <div class="num" v-if="allRole[0]">{{allRole[0].percent}}</div>
-                            <div class="img"><img src="../assets/yuny.png" alt=""></div>
+                             <div class="num" v-show="allRole[0]">{{allRole[0].percent}}</div>
+                            <div class="img"><img src="" alt=""></div>
                             <div class="name">任务完成率</div>
                           </div>
                         </div>
                       </div>
-                      <div class="bu-fa xiaoshou">
+                      <div class="bu-fa xiaoshou">  
                         <div class="bu-tit">
                           <span></span>
-                          <p v-if="allRole[1]">{{allRole[1].name}}</p>
+                          <p v-show="allRole[1]">{{allRole[1].name}}</p>
                         </div>
                         <div class="bu-cont">
                           <div class="bu-left" >
-                            <div class="num" v-if="allRole[1]">{{allRole[1].count}}</div>
+                            <div class="num" v-show="allRole[1]">{{allRole[1].count}}</div>
                             <div class="img"><img src="../assets/shopp.png" alt=""></div>
                             <div class="name">每月新增任务</div>
                           </div>
                           <div class="bu-right">
-                             <div class="num" v-if="allRole[1]">{{allRole[1].percent}}</div>
+                             <div class="num" v-show="allRole[1]">{{allRole[1].percent}}</div>
                             <div class="img"><img src="../assets/shopp.png" alt=""></div>
                             <div class="name">任务完成率</div>
                           </div>
@@ -54,16 +54,16 @@
                       <div class="bu-fa xiangmu">
                         <div class="bu-tit">
                           <span></span>
-                          <p v-if="allRole[2]">{{allRole[2].name}}</p>
+                          <p v-show="allRole[2]">{{allRole[2].name}}</p>
                         </div>
                         <div class="bu-cont">
                           <div class="bu-left" >
-                            <div class="num" v-if="allRole[2]">{{allRole[2].count}}</div>
+                            <div class="num" v-show="allRole[2]">{{allRole[2].count}}</div>
                             <div class="img"><img src="../assets/project.png" alt=""></div>
                             <div class="name">每月新增任务</div>
                           </div>
                           <div class="bu-right">
-                             <div class="num" v-if="allRole[2]">{{allRole[2].percent}}</div>
+                             <div class="num" v-show="allRole[2]">{{allRole[2].percent}}</div>
                             <div class="img"><img src="../assets/project.png" alt=""></div>
                             <div class="name">任务完成率</div>
                           </div>
@@ -72,16 +72,16 @@
                       <div class="bu-fa chanpin">
                           <div class="bu-tit">
                           <span></span>
-                          <p v-if="allRole[3]">{{allRole[3].name}}</p>
+                          <p v-show="allRole[3]">{{allRole[3].name}}</p>
                         </div>
                         <div class="bu-cont">
                           <div class="bu-left" >
-                            <div class="num" v-if="allRole[3]">{{allRole[3].count}}</div>
+                            <div class="num" v-show="allRole[3]">{{allRole[3].count}}</div>
                             <div class="img"><img src="../assets/chan.png" alt=""></div>
                             <div class="name">每月新增任务</div>
                           </div>
                           <div class="bu-right">
-                             <div class="num" v-if="allRole[3]">{{allRole[3].percent}}</div>
+                             <div class="num" v-show="allRole[3]">{{allRole[3].percent}}</div>
                             <div class="img"><img src="../assets/chan.png" alt=""></div>
                             <div class="name">任务完成率</div>
                           </div>
@@ -90,18 +90,43 @@
                       <div class="bu-fa yanfa">
                          <div class="bu-tit">
                           <span></span>
-                          <p v-if="allRole[4]">{{allRole[4].name}}</p>
+                          <p v-show="allRole[4]">{{allRole[4].name}}</p>
                         </div>
                         <div class="bu-cont">
                           <div class="bu-left" >
-                            <div class="num" v-if="allRole[4]">{{allRole[4].count}}</div>
+                            <div class="num" v-show="allRole[4]">{{allRole[4].count}}</div>
                             <div class="img"><img src="../assets/yanfa.png" alt=""></div>
                             <div class="name">每月新增任务</div>
                           </div>
                           <div class="bu-right">
-                             <div class="num" v-if="allRole[4]">{{allRole[4].percent}}</div>
+                             <div class="num" v-show="allRole[4]">{{allRole[4].percent}}</div>
                             <div class="img"><img src="../assets/yanfa.png" alt=""></div>
                             <div class="name">任务完成率</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="bu-fa bangdan">
+                         <div class="bu-tit">
+                          <span></span>
+                          <p>光荣榜</p>
+                        </div>
+                        <div class="bu-cont">
+                          <div class="bu-left" v-show="Bangdan.best">
+                            <div class="b-tit-name">每月最佳</div>
+                            <div class="b-user-header">
+                              <img class="use-head" :src="Bangdan.best.head" alt="">
+                              <img class="b-logo" src="../assets/best.png" alt="">
+                            </div>
+                            <div class="b-user-name">{{Bangdan.best.name}}</div>
+                          </div>
+                          <div class="bu-right" v-show="Bangdan.worst">
+                            <div class="b-tit-name">尚需努力</div>
+                            <div class="b-user-header">
+                              <img class="use-head" :src="Bangdan.worst.head" alt="">
+                              <img class="b-logo" src="../assets/worst.png" alt="">
+                              </div>
+                            <div class="b-user-name">{{Bangdan.worst.name}}</div>
                           </div>
                         </div>
                       </div>
@@ -125,7 +150,7 @@
                       <div
                         class="cal"
                         v-for="(item,index) in Running"
-                        v-if="index < (inx + 1) * 4 && index >= inx * 4"
+                        v-show="index < (inx + 1) * 4 && index >= inx * 4"
                         v-bind:key="index"
                         :class="
                               item.stat == 3 ? 'Green' :
@@ -150,7 +175,7 @@
                             <div class="pro-per">{{nameBu}} {{item.user_name}}</div>
                           </div>
                         </div>
-                         <div class="header-img" v-if="item.head">
+                         <div class="header-img" v-show="item.head">
                           <img :src="item.head" alt="">
                         </div>
                       </div>
@@ -175,7 +200,7 @@
                       <div
                         class="cal"
                         v-for="(item,index) in NoRunning"
-                        v-if="index < (inx + 1) * 4 && index >= inx * 4"
+                        v-show="index < (inx + 1) * 4 && index >= inx * 4"
                         v-bind:key="index"
                         :class="asdasdasd(item.plan_end_time) === 2 ? 'Red' :  
 															 asdasdasd(item.plan_end_time) === 3 ? 'Blue' :
@@ -197,7 +222,7 @@
                             <div class="pro-per">{{nameBu}} {{item.user_name}}</div>
                           </div>
                         </div>
-                         <div class="header-img" v-if="item.head">
+                         <div class="header-img" v-show="item.head">
                           <img :src="item.head" alt="">
                         </div>
                       </div>
@@ -218,11 +243,10 @@
                 <!-- Swiper -->
                 <div class="swiper-container">
                   <div class="swiper-wrapper">
-                    <div class="swiper-slide" v-for="(val,inx) in YerListLeng" v-bind:key="inx">
+                    <div class="swiper-slide" v-for="(val,inx) in yesDayList" v-bind:key="inx">
                       <div
                         class="cal"
-                        v-for="(item,index) in yesDayList"
-                        v-if="index < (inx + 1) * 4 && index >= inx * 4"
+                        v-for="(item,index) in val"
                         v-bind:key="index"
                       >
                         <img  :src="item.stat == 2 ? RunningImg :
@@ -242,7 +266,7 @@
                             <div class="pro-per">{{nameBu}} {{item.user_name}}</div>
                           </div>
                         </div>
-                         <div class="header-img" v-if="item.head">
+                         <div class="header-img" v-show="item.head">
                           <img :src="item.head" alt="">
                         </div>
                       </div>
@@ -267,10 +291,10 @@ export default {
   inject: ["reload"],
   data() {
     return {
-      yesDayList: {}, //昨日完成
-      Running: {}, //进行中
-      NoRunning: {}, //待进行
-      tiemr: null,
+      yesDayList: [], //昨日完成
+      Running: [], //进行中
+      NoRunning: [], //待进行
+      timer: null,
       nowTimes: {
         year: 1937,
         yy: 0,
@@ -285,7 +309,8 @@ export default {
       contNum : 0,   //记录十分钟之后刷新
       RunningImg : require('../assets/run.png'),
       NORunningImg : require('../assets/norun.png'),
-      SucImg : require('../assets/success.png')
+      SucImg : require('../assets/success.png'),
+      Bangdan:{}
     };
   },
   methods: {
@@ -305,13 +330,15 @@ export default {
         //警告
       }
     },
-    async setNowTimes() {
+    setNowTimes() {
       let myDate = new Date();
       this.contNum++;
-      console.log(this.contNum)
       if(this.contNum > 600){
         this.contNum = 0;
-        this.reload();
+        clearInterval(this.timer);
+        this.$nextTick(()=>{
+          this.reload();
+        })
       }
       // console.log(myDate.toLocaleDateString()) //获取当前日期)
       // console.log(myDate.toLocaleTimeString()); //获取当前时间
@@ -350,45 +377,8 @@ export default {
           ? "0" + myDate.getSeconds()
           : myDate.getSeconds()
       );
-      // clearInterval(this.tiemr)
     },
 
-    // initWebSocket() {
-    //   const wsuri = `wss://www.kongfushidai.cn/wx/role/${
-    //     this.$route.query.id
-    //       ? this.$route.query.id
-    //       : sessionStorage.getItem("role")
-    //   }/?${
-    //     localStorage.getItem("jp_token") ? localStorage.getItem("jp_token") : ""
-    //   }`;
-    //   this.websock = new WebSocket(wsuri); //这里面的this都指向vue
-    //   this.websock.onopen = this.websocketopen;
-    //   this.websock.onmessage = this.websocketonmessage;
-    //   this.websock.onclose = this.websocketclose;
-    //   this.websock.onerror = this.websocketerror;
-    // },
-    // websocketopen() {
-    //   //打开
-    //   console.log("WebSocket连接成功");
-    // },
-    // websocketonmessage(e) {
-    //   //数据接收
-    //   let ObjData = JSON.parse(e.data);
-    //   console.log(ObjData);
-    //   console.log("收到");
-    //   if (ObjData.text == "update") {
-    //     this.websock.close();
-    //     this.reload();
-    //   }
-    // },
-    // websocketclose() {
-    //   //关闭
-    //   console.log("WebSocket关闭");
-    // },
-    // websocketerror() {
-    //   //失败
-    //   console.log("WebSocket连接失败");
-    // }
   },
   mounted() {
     this.nameBu =
@@ -403,7 +393,13 @@ export default {
         : this.$route.query.id == 5
         ? "市场销售"
         : "控福";
-    this.setNowTimes();
+
+
+
+
+    this.timer = setInterval(() => {
+        this.setNowTimes();
+      }, 1000);
     this.$nextTick(() => {
       var swiper = new Swiper(".swiper-container", {
         pagination: ".swiper-pagination",
@@ -414,51 +410,70 @@ export default {
       });
     });
 
-    this.$http
-      .get(
-        this.$conf.env.getBossSeeTaskYes
-      )
-      .then(res => {
-        // console.log(res)
-        this.yesDayList = res.data;
-        // console.log(this.yesDayList);
-      })
-      .catch(err => {});
+   
 
-    //进行中
-    this.$http
-      .get(
-        this.$conf.env.getBossSeeTaskRun)
-      .then(res => {
-        this.Running = res.data;
-        // console.log(this.Running);
-      })
-      .catch(err => {});
+    
 
-    //待进行
-    this.$http
-      .get(
-        this.$conf.env.getBossSeeTaskNo)
-      .then(res => {
-        this.NoRunning = res.data;
-        // console.log(this.NoRunning);
-      })
-      .catch(err => {});
-    // console.log(this.websock)
-    // if(!this.websock){
-    //     this.initWebSocket();
-    // }
+   
 
     //各部门状态
     this.$http
       .get(
         this.$conf.env.AllRoleStatus)
       .then(res => {
-        // console.log(res.data);
-        this.allRole = res.data
+        this.allRole = res.data;
+          //榜单
+          this.$http
+          .get(
+            this.$conf.env.getBossBoard)
+          .then(res => {
+            this.Bangdan = res.data
+              //进行中
+              this.$http
+                .get(
+                  this.$conf.env.getBossSeeTaskRun)
+                .then(res => {
+                  this.Running = res.data;
+                  this.$http
+                    .get(
+                      this.$conf.env.getBossSeeTaskYes
+                    )
+                    .then(res => {
+
+                          var arr = [];
+                          var num = 0;
+                          for(var i in res.data){
+                            if(num === 4){
+                              this.yesDayList.push(arr)
+                              arr = [];
+                              arr.push(res.data[i])
+                              num = 0;
+                            }
+                            num++;
+                            arr.push(res.data[i])
+                          }
+                          this.yesDayList.push(arr)
+                          console.log(this.yesDayList)
+
+                        //待进行
+                        this.$http
+                          .get(
+                            this.$conf.env.getBossSeeTaskNo)
+                          .then(res => {
+                            this.NoRunning = res.data;
+                          }).catch(err => {});
+                    })
+                    .catch(err => {});
+                })
+                .catch(err => {});
+             
+          })
+          .catch(err => {});
       })
       .catch(err => {});
 
+  
+    
     
   },
   computed: {
@@ -504,45 +519,11 @@ export default {
     }
   },
   destroyed() {
-    // this.websock.close(); //离开路由之后断开websocket连接
      console.log('销毁');
-     clearInterval(this.tiemr);
   },
 
   watch: {
-    NorunList(news, olds) {
-      // console.log(this.NoRunning.length);
-      // console.log(this.$route.query.id);
-    },
-    YerListLeng() {},
-    RunningLeng() {},
-    GetTimeData(news, olds) {
-      // console.log(news);
-    },
-    RouterName(news, olds) {
-      // console.log(news);
-    },
-    TodayMins() {
-      this.$nextTick(() => {
-        // console.log("修改了");
-        // if (this.websock) {
-        //   this.websock.close();
-        //   this.websock = undefined;
-        //   this.$nextTick(() => {
-        //     this.initWebSocket();
-        //   });
-        // } else {
-        //   this.initWebSocket();
-        // }
-      });
-    },
-    ToadyTimer(news, old) {
-      clearInterval(this.tiemr);
-        console.log("清空");
-      this.tiemr = setInterval(() => {
-        this.setNowTimes();
-      }, 1000);
-    }
+   
   }
 };
 </script>
@@ -641,8 +622,50 @@ $height: 10.8rem;
                 background:rgba(0,255,204,1);
               }
           }
+          .bangdan{
+            color: #DFDFDF;
+            span{
+              background: #E50B0B;
+            }
+            .bu-cont{
+              margin-top: .18rem !important;
+              padding: 0 .32rem;
+            }
+            .b-tit-name{
+              font-size:.16rem;
+              color:#EAF8F8;
+              text-align: center;
+              font-family: yishu;
+            }
+            .b-user-header{
+              width:.57rem;
+              height:.57rem;
+              border-radius:50%;
+              margin: .14rem auto .25rem;
+              position: relative;
+              .use-head{
+                display: block;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+              }
+              .b-logo{
+                  position: absolute;
+                  width:.3rem;
+                  height:.3rem;
+                  top: .34rem;
+                  left: .39rem;
+              }
+            }
+            .b-user-name{
+                font-size:.16rem;
+                color:rgba(234,248,248,1);
+                text-align: center;
+                font-family: yishu;
+            }
+          }
           .bu-fa{
-            width:3.56rem;
+            width:3rem;
             height:2rem;
             background:linear-gradient(-45deg,rgba(28,37,88,1) 0%,rgba(16,22,56,1) 100%);
             border-radius:.01rem;
@@ -669,7 +692,6 @@ $height: 10.8rem;
               display: flex;
               justify-content: space-between;
               margin-top: .3rem;
-              padding: 0 .1rem;
               box-sizing: border-box;
               >div{
                 text-align: center;

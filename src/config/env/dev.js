@@ -17,6 +17,7 @@ module.exports = {
     getBossSeeTaskRun : winchaingroupApi + 'p/v2/wx/all_ing/',          //所有进行中
     getBossSeeTaskNo : winchaingroupApi + 'p/v2/wx/all_wait/',        //待进行
     AllRoleStatus : winchaingroupApi + 'p/v2/wx/role_status/',        //大屏部门状态
+    getBossBoard : winchaingroupApi + 'p/v2/wx/board/',               //大屏榜单
 };
 
 

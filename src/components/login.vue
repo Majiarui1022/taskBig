@@ -57,8 +57,8 @@ export default {
       ButLoading: false,
       options: [],
       ruleForm : {
-        input : 'kf0007',
-        pas: "asd123456",
+        input : '',
+        pas: "",
         value: "",
       },
       rules:{
