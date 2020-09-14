@@ -9,148 +9,88 @@
       </div>
       <div class="menu">
         <div class="menu-pad">
+          <!-- 18.8rem -->
           <div class="nemu-tit">
             <!-- Swiper -->
-                <div class="swiper-container">
-                  <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-
-                      <div class="bu-fa yunying">
-                        <div class="bu-tit">
-                          <span></span>
-                          <p v-show="allRole[0]">{{allRole[0].name}}</p>
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide" v-for="(item,index) in allRole" :key="index">
+                  <div
+                    :key="inx"
+                    v-for="(val,inx) in item"
+                    class="bu-fa"
+                    :class="inx == 0 ? 'yunying' : inx == 1 ? 'xiaoshou': inx == 2 ? 'xiangmu' : inx == 3 ? 'chanpin' : inx == 4 ? 'yanfa' :'bangdan'"
+                  >
+                    <div class="bu-tit">
+                      <span></span>
+                      <p>{{val.name}}</p>
+                    </div>
+                    <div class="bu-cont">
+                      <div class="bu-left">
+                        <div class="num">{{val.count}}</div>
+                        <div class="img">
+                          <img
+                            :src="inx == 0 ? YYimg : inx == 1 ? XSmg: inx == 2 ? XMimg : inx == 3 ? CPimg : inx == 4 ? YFmg :''"
+                            alt
+                          />
                         </div>
-                        <div class="bu-cont">
-                          <div class="bu-left" >
-                            <div class="num" v-show="allRole[0]">{{allRole[0].count}}</div>
-                            <div class="img"><img src="" alt=""></div>
-                            <div class="name">每月新增任务</div>
-                          </div>
-                          <div class="bu-right">
-                             <div class="num" v-show="allRole[0]">{{allRole[0].percent}}</div>
-                            <div class="img"><img src="" alt=""></div>
-                            <div class="name">任务完成率</div>
-                          </div>
-                        </div>
+                        <div class="name">每月新增任务</div>
                       </div>
-                      <div class="bu-fa xiaoshou">  
-                        <div class="bu-tit">
-                          <span></span>
-                          <p v-show="allRole[1]">{{allRole[1].name}}</p>
+                      <div class="bu-right">
+                        <div class="num">{{val.percent}}</div>
+                        <div class="img">
+                          <img
+                            :src="inx == 0 ? YYimg : inx == 1 ? XSmg: inx == 2 ? XMimg : inx == 3 ? CPimg : inx == 4 ? YFmg :''"
+                            alt
+                          />
                         </div>
-                        <div class="bu-cont">
-                          <div class="bu-left" >
-                            <div class="num" v-show="allRole[1]">{{allRole[1].count}}</div>
-                            <div class="img"><img src="../assets/shopp.png" alt=""></div>
-                            <div class="name">每月新增任务</div>
-                          </div>
-                          <div class="bu-right">
-                             <div class="num" v-show="allRole[1]">{{allRole[1].percent}}</div>
-                            <div class="img"><img src="../assets/shopp.png" alt=""></div>
-                            <div class="name">任务完成率</div>
-                          </div>
-                        </div>
+                        <div class="name">任务完成率</div>
                       </div>
-                      <div class="bu-fa xiangmu">
-                        <div class="bu-tit">
-                          <span></span>
-                          <p v-show="allRole[2]">{{allRole[2].name}}</p>
-                        </div>
-                        <div class="bu-cont">
-                          <div class="bu-left" >
-                            <div class="num" v-show="allRole[2]">{{allRole[2].count}}</div>
-                            <div class="img"><img src="../assets/project.png" alt=""></div>
-                            <div class="name">每月新增任务</div>
-                          </div>
-                          <div class="bu-right">
-                             <div class="num" v-show="allRole[2]">{{allRole[2].percent}}</div>
-                            <div class="img"><img src="../assets/project.png" alt=""></div>
-                            <div class="name">任务完成率</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="bu-fa chanpin">
-                          <div class="bu-tit">
-                          <span></span>
-                          <p v-show="allRole[3]">{{allRole[3].name}}</p>
-                        </div>
-                        <div class="bu-cont">
-                          <div class="bu-left" >
-                            <div class="num" v-show="allRole[3]">{{allRole[3].count}}</div>
-                            <div class="img"><img src="../assets/chan.png" alt=""></div>
-                            <div class="name">每月新增任务</div>
-                          </div>
-                          <div class="bu-right">
-                             <div class="num" v-show="allRole[3]">{{allRole[3].percent}}</div>
-                            <div class="img"><img src="../assets/chan.png" alt=""></div>
-                            <div class="name">任务完成率</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="bu-fa yanfa">
-                         <div class="bu-tit">
-                          <span></span>
-                          <p v-show="allRole[4]">{{allRole[4].name}}</p>
-                        </div>
-                        <div class="bu-cont">
-                          <div class="bu-left" >
-                            <div class="num" v-show="allRole[4]">{{allRole[4].count}}</div>
-                            <div class="img"><img src="../assets/yanfa.png" alt=""></div>
-                            <div class="name">每月新增任务</div>
-                          </div>
-                          <div class="bu-right">
-                             <div class="num" v-show="allRole[4]">{{allRole[4].percent}}</div>
-                            <div class="img"><img src="../assets/yanfa.png" alt=""></div>
-                            <div class="name">任务完成率</div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="bu-fa bangdan">
-                         <div class="bu-tit">
-                          <span></span>
-                          <p>光荣榜</p>
-                        </div>
-                        <div class="bu-cont">
-                          <div class="bu-left" v-show="Bangdan.best">
-                            <div class="b-tit-name">每月最佳</div>
-                            <div class="b-user-header">
-                              <img class="use-head" :src="Bangdan.best.head" alt="">
-                              <img class="b-logo" src="../assets/best.png" alt="">
-                            </div>
-                            <div class="b-user-name">{{Bangdan.best.name}}</div>
-                          </div>
-                          <div class="bu-right" v-show="Bangdan.worst">
-                            <div class="b-tit-name">尚需努力</div>
-                            <div class="b-user-header">
-                              <img class="use-head" :src="Bangdan.worst.head" alt="">
-                              <img class="b-logo" src="../assets/worst.png" alt="">
-                              </div>
-                            <div class="b-user-name">{{Bangdan.worst.name}}</div>
-                          </div>
-                        </div>
-                      </div>
-
-                      
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div class="bu-fa bangdan">
+              <div class="bu-tit">
+                <span></span>
+                <p>光荣榜</p>
+              </div>
+              <div class="bu-cont">
+                <div class="bu-left" v-if="Bangdan.best">
+                  <div class="b-tit-name">每月最佳</div>
+                  <div class="b-user-header">
+                    <img class="use-head" :src="Bangdan.best.head" alt />
+                    <img class="b-logo" src="../assets/best.png" alt />
+                  </div>
+                  <div class="b-user-name">{{Bangdan.best.name}}</div>
+                </div>
+                <div class="bu-right" v-if="Bangdan.worst">
+                  <div class="b-tit-name">尚需努力</div>
+                  <div class="b-user-header">
+                    <img class="use-head" :src="Bangdan.worst.head" alt />
+                    <img class="b-logo" src="../assets/worst.png" alt />
+                  </div>
+                  <div class="b-user-name">{{Bangdan.worst.name}}</div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="cont">
             <div class="row">
               <div class="row-tit">
                 <img src="../assets/running.png" alt />
-                <span>每日工作({{this.Running.length}})</span>
+
+                <span>每日工作({{this.runlength}})</span>
               </div>
               <div class="row-con row-menu">
                 <!-- Swiper -->
                 <div class="swiper-container">
                   <div class="swiper-wrapper">
-                    <div class="swiper-slide" v-for="(val,inx) in RunningLeng" v-bind:key="inx">
+                    <div class="swiper-slide" v-for="(val,inx) in Running" v-bind:key="inx">
                       <div
                         class="cal"
-                        v-for="(item,index) in Running"
-                        v-show="index < (inx + 1) * 4 && index >= inx * 4"
+                        v-for="(item,index) in val"
                         v-bind:key="index"
                         :class="
                               item.stat == 3 ? 'Green' :
@@ -158,8 +98,11 @@
 															 asdasdasd(item.plan_end_time) === 3 ? 'Blue' :
 															 asdasdasd(item.plan_end_time) === 4 ? 'Yellow' : 'Blue'"
                       >
-                        <img :src="item.stat == 2 ? RunningImg :
-                           item.stat == 3 ? SucImg :''" alt />
+                        <img
+                          :src="item.stat == 2 ? RunningImg :
+                           item.stat == 3 ? SucImg :''"
+                          alt
+                        />
                         <div class="info">
                           <div class="name">{{item.task}}</div>
                           <div class="name-t">{{item.project}}</div>
@@ -169,14 +112,14 @@
                           </div>
                           <div class="address">
                             <div class="address-info">
-                              <img src="../assets/address.png" alt=""> 
+                              <img src="../assets/address.png" alt />
                               {{item.address}}
                             </div>
-                            <div class="pro-per">{{nameBu}} {{item.user_name}}</div>
+                            <div class="pro-per">{{item.role}} {{item.user_name}}</div>
                           </div>
                         </div>
-                         <div class="header-img" v-show="item.head">
-                          <img :src="item.head" alt="">
+                        <div class="header-img" v-show="item.head">
+                          <img :src="item.head" alt />
                         </div>
                       </div>
                     </div>
@@ -186,21 +129,19 @@
                 </div>
               </div>
             </div>
-
             <div class="row">
               <div class="row-tit">
                 <img src="../assets/clarun.png" alt />
-                <span>待进行({{this.NoRunning.length}})</span>
+                <span>待进行({{this.norun}})</span>
               </div>
               <div class="row-con row-menu">
                 <!-- Swiper -->
                 <div class="swiper-container">
                   <div class="swiper-wrapper">
-                    <div class="swiper-slide" v-for="(val,inx) in NorunList" v-bind:key="inx">
+                    <div class="swiper-slide" v-for="(val,inx) in NoRunning" v-bind:key="inx">
                       <div
                         class="cal"
-                        v-for="(item,index) in NoRunning"
-                        v-show="index < (inx + 1) * 4 && index >= inx * 4"
+                        v-for="(item,index) in val"
                         v-bind:key="index"
                         :class="asdasdasd(item.plan_end_time) === 2 ? 'Red' :  
 															 asdasdasd(item.plan_end_time) === 3 ? 'Blue' :
@@ -216,14 +157,14 @@
                           </div>
                           <div class="address">
                             <div class="address-info">
-                              <img src="../assets/address.png" alt=""> 
+                              <img src="../assets/address.png" alt />
                               {{item.address}}
                             </div>
-                            <div class="pro-per">{{nameBu}} {{item.user_name}}</div>
+                            <div class="pro-per">{{item.role}} {{item.user_name}}</div>
                           </div>
                         </div>
-                         <div class="header-img" v-show="item.head">
-                          <img :src="item.head" alt="">
+                        <div class="header-img" v-show="item.head">
+                          <img :src="item.head" alt />
                         </div>
                       </div>
                     </div>
@@ -237,20 +178,19 @@
             <div class="row">
               <div class="row-tit">
                 <img src="../assets/notask.png" alt />
-                <span>超时未完成({{this.yesDayList.length}})</span>
+                <span>超时未完成({{this.yeslength}})</span>
               </div>
               <div class="row-con row-menu">
                 <!-- Swiper -->
                 <div class="swiper-container">
                   <div class="swiper-wrapper">
                     <div class="swiper-slide" v-for="(val,inx) in yesDayList" v-bind:key="inx">
-                      <div
-                        class="cal"
-                        v-for="(item,index) in val"
-                        v-bind:key="index"
-                      >
-                        <img  :src="item.stat == 2 ? RunningImg :
-                           item.stat == 1 ? NORunningImg :''" alt />
+                      <div class="cal" v-for="(item,index) in val" v-bind:key="index">
+                        <img
+                          :src="item.stat == 2 ? RunningImg :
+                           item.stat == 1 ? NORunningImg :''"
+                          alt
+                        />
                         <div class="info">
                           <div class="name">{{item.task}}</div>
                           <div class="name-t">{{item.project}}</div>
@@ -260,14 +200,14 @@
                           </div>
                           <div class="address">
                             <div class="address-info">
-                              <img src="../assets/address.png" alt=""> 
+                              <img src="../assets/address.png" alt />
                               {{item.address}}
                             </div>
-                            <div class="pro-per">{{nameBu}} {{item.user_name}}</div>
+                            <div class="pro-per">{{item.role}} {{item.user_name}}</div>
                           </div>
                         </div>
-                         <div class="header-img" v-show="item.head">
-                          <img :src="item.head" alt="">
+                        <div class="header-img" v-show="item.head">
+                          <img :src="item.head" alt />
                         </div>
                       </div>
                     </div>
@@ -294,6 +234,9 @@ export default {
       yesDayList: [], //昨日完成
       Running: [], //进行中
       NoRunning: [], //待进行
+      runlength: 0,
+      yeslength: 0,
+      norun: 0,
       timer: null,
       nowTimes: {
         year: 1937,
@@ -302,15 +245,21 @@ export default {
         hou: "00",
         min: "00",
         sec: "00",
-        week: "5"
+        week: "5",
       },
       nameBu: "",
-      allRole:[],
-      contNum : 0,   //记录十分钟之后刷新
-      RunningImg : require('../assets/run.png'),
-      NORunningImg : require('../assets/norun.png'),
-      SucImg : require('../assets/success.png'),
-      Bangdan:{}
+      allRole: [],
+      contNum: 0, //记录十分钟之后刷新
+      RunningImg: require("../assets/run.png"),
+      NORunningImg: require("../assets/norun.png"),
+      SucImg: require("../assets/success.png"),
+      Bangdan: {},
+
+      YYimg: require("../assets/yuny.png"),
+      XSmg: require("../assets/shopp.png"),
+      XMimg: require("../assets/project.png"),
+      CPimg: require("../assets/chan.png"),
+      YFmg: require("../assets/yanfa.png"),
     };
   },
   methods: {
@@ -321,11 +270,14 @@ export default {
       );
       if (timers < 0) {
         //逾期
+        timers = null;
         return 2;
       } else if (timers > 2) {
+        timers = null;
         return 3;
         //正常
       } else {
+        timers = null;
         return 4;
         //警告
       }
@@ -333,12 +285,12 @@ export default {
     setNowTimes() {
       let myDate = new Date();
       this.contNum++;
-      if(this.contNum > 600){
+      if (this.contNum > 600) {
         this.contNum = 0;
         clearInterval(this.timer);
-        this.$nextTick(()=>{
+        this.$nextTick(() => {
           this.reload();
-        })
+        });
       }
       // console.log(myDate.toLocaleDateString()) //获取当前日期)
       // console.log(myDate.toLocaleTimeString()); //获取当前时间
@@ -378,7 +330,6 @@ export default {
           : myDate.getSeconds()
       );
     },
-
   },
   mounted() {
     this.nameBu =
@@ -394,145 +345,138 @@ export default {
         ? "市场销售"
         : "控福";
 
-
-
-
     this.timer = setInterval(() => {
-        this.setNowTimes();
-      }, 1000);
-    this.$nextTick(() => {
-      var swiper = new Swiper(".swiper-container", {
-        pagination: ".swiper-pagination",
-        autoplayDisableOnInteraction: false,
-        autoplay: 10000,
-        observer: true, //修改swiper自己或子元素时，自动初始化swiper
-        observeParents: true //修改swiper的父元素时，自动初始化swiper
-      });
-    });
-
-   
-
-    
-
-   
+      this.setNowTimes();
+    }, 1000);
 
     //各部门状态
     this.$http
-      .get(
-        this.$conf.env.AllRoleStatus)
-      .then(res => {
-        this.allRole = res.data;
-          //榜单
-          this.$http
-          .get(
-            this.$conf.env.getBossBoard)
-          .then(res => {
-            this.Bangdan = res.data
-              //进行中
-              this.$http
-                .get(
-                  this.$conf.env.getBossSeeTaskRun)
-                .then(res => {
-                  this.Running = res.data;
-                  this.$http
-                    .get(
-                      this.$conf.env.getBossSeeTaskYes
-                    )
-                    .then(res => {
+      .get(this.$conf.env.AllRoleStatus)
+      .then((res) => {
+        console.log(res.data);
+        var arr = [];
+        var num = 0;
+         for (var i in res.data) {
+          if (num === 4) {
+            this.allRole.push(arr);
+            arr = [];
+            arr.push(res.data[i]);
+            num = 1;
+          } else {
+            num++;
+            arr.push(res.data[i]);
+          }
+        }
+        this.allRole.push(arr);
+        //榜单
+        this.$http
+          .get(this.$conf.env.getBossBoard)
+          .then((res) => {
+            this.Bangdan = res.data;
+            //进行中
+            this.$http
+              .get(this.$conf.env.getBossSeeTaskRun)
+              .then((res) => {
+                var arr = [];
+                var num = 0;
+                this.runlength = res.data.length;
+                for (var i in res.data) {
+                  if (num === 4) {
+                    this.Running.push(arr);
+                    arr = [];
+                    arr.push(res.data[i]);
+                    num = 1;
+                  } else {
+                    num++;
+                    arr.push(res.data[i]);
+                  }
+                }
+                this.Running.push(arr);
+                this.$http
+                  .get(this.$conf.env.getBossSeeTaskYes)
+                  .then((res) => {
+                    var arr = [];
+                    var num = 0;
+                    this.yeslength = res.data.length;
+                    for (var i in res.data) {
+                      if (num === 4) {
+                        this.yesDayList.push(arr);
+                        arr = [];
+                        arr.push(res.data[i]);
+                        num = 1;
+                      } else {
+                        num++;
+                        arr.push(res.data[i]);
+                      }
+                    }
+                    this.yesDayList.push(arr);
 
-                          var arr = [];
-                          var num = 0;
-                          for(var i in res.data){
-                            if(num === 4){
-                              this.yesDayList.push(arr)
-                              arr = [];
-                              arr.push(res.data[i])
-                              num = 0;
-                            }
+                    //待进行
+                    this.$http
+                      .get(this.$conf.env.getBossSeeTaskNo)
+                      .then((res) => {
+                        var arr = [];
+                        var num = 0;
+                        this.norun = res.data.length;
+                        for (var i in res.data) {
+                          if (num === 4) {
+                            this.NoRunning.push(arr);
+                            arr = [];
+                            arr.push(res.data[i]);
+                            num = 1;
+                          } else {
                             num++;
-                            arr.push(res.data[i])
+                            arr.push(res.data[i]);
                           }
-                          this.yesDayList.push(arr)
-                          console.log(this.yesDayList)
-
-                        //待进行
-                        this.$http
-                          .get(
-                            this.$conf.env.getBossSeeTaskNo)
-                          .then(res => {
-                            this.NoRunning = res.data;
-                          }).catch(err => {});
-                    })
-                    .catch(err => {});
-                })
-                .catch(err => {});
-             
+                        }
+                        this.NoRunning.push(arr);
+                        this.$nextTick(() => {
+                          var swiper = new Swiper(".swiper-container", {
+                            pagination: ".swiper-pagination",
+                            autoplayDisableOnInteraction: false,
+                            autoplay: 10000,
+                            observer: true, //修改swiper自己或子元素时，自动初始化swiper
+                            observeParents: true, //修改swiper的父元素时，自动初始化swiper
+                          });
+                        });
+                      })
+                      .catch((err) => {});
+                  })
+                  .catch((err) => {});
+              })
+              .catch((err) => {});
           })
-          .catch(err => {});
+          .catch((err) => {
+            console.log(err.response);
+            if (err.response.status === 401) {
+              this.$message.error({
+                message: "身份验证失败,请重新登录",
+                duration: 3000,
+              });
+              this.$router.push({
+                name: "login",
+              });
+            } else {
+              this.$message.error({
+                message: "服务器请求失败",
+                duration: 3000,
+              });
+            }
+          });
       })
-      .catch(err => {});
-
-  
-    
-    
-  },
-  computed: {
-    //计算进行中页数
-    RunningLeng() {
-      if (this.Running.length) {
-        if ((this.Running.length / 4) % 1 === 0) {
-          return this.Running.length / 4;
-        } else {
-          return Math.floor(this.Running.length / 4) + 1;
-        }
-      }
-    },
-    YerListLeng() {
-      if (this.yesDayList.length) {
-        if ((this.yesDayList.length / 4) % 1 === 0) {
-          return this.yesDayList.length / 4;
-        } else {
-          return Math.floor(this.yesDayList.length / 4) + 1;
-        }
-      }
-    },
-    NorunList() {
-      if (this.NoRunning.length) {
-        if ((this.NoRunning.length / 4) % 1 === 0) {
-          return this.NoRunning.length / 4;
-        } else {
-          return Math.floor(this.NoRunning.length / 4) + 1;
-        }
-      }
-    },
-    GetTimeData() {
-      return new Date();
-    },
-    RouterName() {
-      return this.$route.query.id;
-    },
-    ToadyTimer() {
-      return this.nowTimes.hou;
-    },
-    TodayMins() {
-      return this.nowTimes.min;
-    }
+      .catch((err) => {});
   },
   destroyed() {
-     console.log('销毁');
+    console.log("销毁");
   },
-
-  watch: {
-   
-  }
 };
 </script>
 
 <style lang="scss">
-@import url('../../static/font/font.css');
+@import url("../../static/font/font.css");
 $width: 19.2rem;
 $height: 10.8rem;
-.box-boss{
+.box-boss {
   width: 100%;
   height: 100%;
   background: #081029;
@@ -545,12 +489,12 @@ $height: 10.8rem;
   box-sizing: border-box;
   margin: 0 auto;
   .tit {
-    width: calc(100% - .4rem);
+    width: calc(100% - 0.4rem);
     height: 0.7rem;
     background: url("../assets/indextit.png") no-repeat;
     background-size: 100% 100%;
     position: relative;
-    margin:0 auto;
+    margin: 0 auto;
     span {
       font-size: 0.34rem;
       color: rgba(18, 151, 236, 1);
@@ -575,142 +519,196 @@ $height: 10.8rem;
       height: 100%;
       padding: 0 0.2rem;
       box-sizing: border-box;
-      .nemu-tit{
+      .nemu-tit {
         width: 100%;
-        height:2rem;
-        margin: .08rem 0;
-        .swiper-container{
+        height: 2rem;
+        margin: 0.08rem 0;
+        display: flex;
+        justify-content: space-between;
+        .bangdan {
+          color: #dfdfdf;
+          margin: 0 !important;
+          span {
+            background: #e50b0b;
+          }
+          .bu-cont {
+            margin-top: 0.18rem !important;
+            padding: 0 0.32rem;
+          }
+          .b-tit-name {
+            font-size: 0.16rem;
+            color: #eaf8f8;
+            text-align: center;
+            font-family: yishu;
+          }
+          .b-user-header {
+            width: 0.57rem;
+            height: 0.57rem;
+            border-radius: 50%;
+            margin: 0.14rem auto 0.25rem;
+            position: relative;
+            .use-head {
+              display: block;
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+            }
+            .b-logo {
+              position: absolute;
+              width: 0.3rem;
+              height: 0.3rem;
+              top: 0.34rem;
+              left: 0.39rem;
+            }
+          }
+          .b-user-name {
+            font-size: 0.16rem;
+            color: rgba(234, 248, 248, 1);
+            text-align: center;
+            font-family: yishu;
+          }
+        }
+        .bu-fa {
+          width: 3.56rem;
+          height: 2rem;
+          background: linear-gradient(
+            -45deg,
+            rgba(28, 37, 88, 1) 0%,
+            rgba(16, 22, 56, 1) 100%
+          );
+          border-radius: 0.01rem;
+          padding: 0.1rem 0.14rem;
+          box-sizing: border-box;
+          margin-right: .26rem;
+          .bu-tit {
+            width: 100%;
+            display: flex;
+            height: 0.22rem;
+            align-items: center;
+            span {
+              width: 0.16rem;
+              height: 0.16rem;
+              border-radius: 50%;
+            }
+            p {
+              font-size: 0.22rem;
+              font-family: yishu;
+              color: rgba(223, 223, 223, 1);
+              margin-left: 0.1rem;
+            }
+          }
+          .bu-cont {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.3rem;
+            box-sizing: border-box;
+            > div {
+              text-align: center;
+              .num {
+                font-size: 0.56rem;
+                font-family: yishu;
+                line-height: 0.56rem;
+              }
+              img {
+                display: block;
+                width: 100%;
+                height: 0.52rem;
+              }
+              .name {
+                font-size: 0.22rem;
+                font-family: yishu;
+                line-height: 0.22rem;
+              }
+            }
+          }
+          &:last-child{
+            margin: 0;
+          }
+        }
+        .swiper-container {
+          width: calc(100% - 3.3rem);
+          height: 100%;
+          overflow: hidden;
+        }
+        .swiper-wrapper {
           width: 100%;
           height: 100%;
         }
-        .swiper-wrapper{
-          width: 100%;
-          height: 100%;
-        }
-        .swiper-slide{
-          width: 100%;
+        .swiper-slide {
+          width: 100% !important;
           height: 100%;
           display: flex;
-          justify-content: space-between;
-          .yunying{
-              color:rgba(254,96,174,1);
-              span{
-                background:rgba(254,96,174,1);
-              }
-          }
-          .xiaoshou{
-            color:rgba(253,162,63,1);
-             span{
-                background:rgba(253,162,63,1);
-              }
-          }
-          .xiangmu{
-            color:rgba(154,86,255,1);
-             span{
-                background:rgba(154,86,255,1);
-              }
-          }
-          .chanpin{
-            color:rgba(96,245,254,1);
-             span{
-                background:rgba(96,245,254,1);
-              }
-          }
-          .yanfa{
-            color:rgba(0,255,204,1);
-             span{
-                background:rgba(0,255,204,1);
-              }
-          }
-          .bangdan{
-            color: #DFDFDF;
-            span{
-              background: #E50B0B;
+          overflow: hidden;
+          .yunying {
+            color: rgba(254, 96, 174, 1);
+            span {
+              background: rgba(254, 96, 174, 1);
             }
-            .bu-cont{
-              margin-top: .18rem !important;
-              padding: 0 .32rem;
+          }
+          .xiaoshou {
+            color: rgba(253, 162, 63, 1);
+            span {
+              background: rgba(253, 162, 63, 1);
             }
-            .b-tit-name{
-              font-size:.16rem;
-              color:#EAF8F8;
+          }
+          .xiangmu {
+            color: rgba(154, 86, 255, 1);
+            span {
+              background: rgba(154, 86, 255, 1);
+            }
+          }
+          .chanpin {
+            color: rgba(96, 245, 254, 1);
+            span {
+              background: rgba(96, 245, 254, 1);
+            }
+          }
+          .yanfa {
+            color: rgba(0, 255, 204, 1);
+            span {
+              background: rgba(0, 255, 204, 1);
+            }
+          }
+          .bangdan {
+            color: #dfdfdf;
+            span {
+              background: #e50b0b;
+            }
+            .bu-cont {
+              margin-top: 0.18rem !important;
+              padding: 0 0.32rem;
+            }
+            .b-tit-name {
+              font-size: 0.16rem;
+              color: #eaf8f8;
               text-align: center;
               font-family: yishu;
             }
-            .b-user-header{
-              width:.57rem;
-              height:.57rem;
-              border-radius:50%;
-              margin: .14rem auto .25rem;
+            .b-user-header {
+              width: 0.57rem;
+              height: 0.57rem;
+              border-radius: 50%;
+              margin: 0.14rem auto 0.25rem;
               position: relative;
-              .use-head{
+              .use-head {
                 display: block;
                 width: 100%;
                 height: 100%;
                 border-radius: 50%;
               }
-              .b-logo{
-                  position: absolute;
-                  width:.3rem;
-                  height:.3rem;
-                  top: .34rem;
-                  left: .39rem;
+              .b-logo {
+                position: absolute;
+                width: 0.3rem;
+                height: 0.3rem;
+                top: 0.34rem;
+                left: 0.39rem;
               }
             }
-            .b-user-name{
-                font-size:.16rem;
-                color:rgba(234,248,248,1);
-                text-align: center;
-                font-family: yishu;
-            }
-          }
-          .bu-fa{
-            width:3rem;
-            height:2rem;
-            background:linear-gradient(-45deg,rgba(28,37,88,1) 0%,rgba(16,22,56,1) 100%);
-            border-radius:.01rem;
-            padding: .1rem .14rem;
-            box-sizing: border-box;
-            .bu-tit{
-              width: 100%;
-              display: flex;
-              height: .22rem;
-              align-items: center;
-              span{
-                width:.16rem;
-                height:.16rem;
-                border-radius:50%;
-              }
-              p{
-                font-size:.22rem;
-                font-family:yishu;
-                color:rgba(223,223,223,1);
-                margin-left: .1rem;
-              }
-            }
-            .bu-cont{
-              display: flex;
-              justify-content: space-between;
-              margin-top: .3rem;
-              box-sizing: border-box;
-              >div{
-                text-align: center;
-                .num{
-                  font-size:.56rem;
-                  font-family:yishu;
-                  line-height: .56rem;
-                }
-                img{
-                  display: block;
-                  width: 100%;
-                  height: .52rem;
-                }
-                .name{
-                  font-size:.22rem;
-                  font-family:yishu;
-                  line-height: .22rem;
-                }
-              }
+            .b-user-name {
+              font-size: 0.16rem;
+              color: rgba(234, 248, 248, 1);
+              text-align: center;
+              font-family: yishu;
             }
           }
         }
@@ -746,16 +744,18 @@ $height: 10.8rem;
               color: rgba(0, 255, 186, 1);
             }
           }
-          .row-menu{
-              .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets{
-                bottom: -.18rem;
-                left: 0;
-                width: 100%;
-              }
+          .row-menu {
+            .swiper-pagination-fraction,
+            .swiper-pagination-custom,
+            .swiper-container-horizontal > .swiper-pagination-bullets {
+              bottom: -0.18rem;
+              left: 0;
+              width: 100%;
+            }
           }
           .row-con {
             width: 100%;
-            height: calc(100% - .6rem);
+            height: calc(100% - 0.6rem);
             // .swiper-container{
             //   width: 100%;
             //   height: 100%;
@@ -766,16 +766,16 @@ $height: 10.8rem;
               .cal {
                 width: 5.82rem;
                 height: 1.56rem;
-                background: #E70E36;
+                background: #e70e36;
                 border-radius: 0.2rem;
                 margin: 0 auto 0.16rem;
                 padding: 0.11rem 0.17rem;
                 box-sizing: border-box;
                 display: flex;
                 justify-content: space-between;
-                color: #FFFFFF;
+                color: #ffffff;
                 position: relative;
-                border-bottom-left-radius: .3rem;
+                border-bottom-left-radius: 0.3rem;
                 img {
                   width: 0.4rem;
                   height: 0.4rem;
@@ -796,7 +796,7 @@ $height: 10.8rem;
                   }
                   .name-t {
                     font-size: 0.2rem;
-                    line-height: .3rem;
+                    line-height: 0.3rem;
                     // line-height: 0.5rem;
                   }
                   .but-task {
@@ -806,23 +806,23 @@ $height: 10.8rem;
                     justify-content: space-between;
                     align-items: center;
                   }
-                  .address{
-                     width: 100%;
-                      overflow: hidden;
-                      white-space: nowrap;
-                      text-overflow: ellipsis;
-                      font-size:.18rem;
-                      line-height:.3rem;
-                      display: flex;
-                      justify-content: space-between;
-                      align-items: center;
-                    img{
-                      width:.22rem;
-                      height:.25rem;
+                  .address {
+                    width: 100%;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    font-size: 0.18rem;
+                    line-height: 0.3rem;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    img {
+                      width: 0.22rem;
+                      height: 0.25rem;
                       margin: 0;
                       vertical-align: middle;
                     }
-                     .address-info{
+                    .address-info {
                       width: 3.2rem;
                       overflow: hidden;
                       text-overflow: ellipsis;
@@ -830,16 +830,16 @@ $height: 10.8rem;
                     }
                   }
                 }
-                .header-img{
+                .header-img {
                   position: absolute;
-                  right: .42rem;
-                  bottom:.46rem;
-                  width: .58rem;
-                  height: .58rem;
+                  right: 0.42rem;
+                  bottom: 0.46rem;
+                  width: 0.58rem;
+                  height: 0.58rem;
                   box-sizing: border-box;
-                  border: .02rem solid #101638;
+                  border: 0.02rem solid #101638;
                   border-radius: 50%;
-                  img{
+                  img {
                     width: 100%;
                     height: 100%;
                     display: block;
@@ -847,7 +847,7 @@ $height: 10.8rem;
                     margin: 0 auto;
                   }
                 }
-                 &.Green {
+                &.Green {
                   // background: linear-gradient(
                   //   90deg,
                   //   rgba(34, 177, 214, 1) 0%,
@@ -863,7 +863,7 @@ $height: 10.8rem;
                   //   rgba(242, 101, 137, 1) 100%
                   // );
                   // box-shadow: 0upx 6px 13px 1px rgba(23, 106, 180, 0.2);
-                  background: #E70E36;
+                  background: #e70e36;
                 }
                 &.Yellow {
                   // background: linear-gradient(
@@ -872,7 +872,7 @@ $height: 10.8rem;
                   //   rgba(241, 103, 43, 1) 100%
                   // );
                   // box-shadow: 0px 6px 13px 1px rgba(23, 106, 180, 0.2);
-                  background: #F16C29;
+                  background: #f16c29;
                 }
                 &.Blue {
                   // background: linear-gradient(
@@ -881,7 +881,7 @@ $height: 10.8rem;
                   //   rgba(100, 210, 241, 1) 100%
                   // );
                   // box-shadow: 0px 6px 13px 1px rgba(23, 106, 180, 0.2);
-                  background: #0084FF;
+                  background: #0084ff;
                 }
               }
             }

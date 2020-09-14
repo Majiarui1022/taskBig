@@ -2,7 +2,15 @@
   <div class="box">
     <div class="index">
       <div class="tit">
-        <span>{{nameBu}}任务大屏</span>
+        <div class="center-tit">
+          <img src="../assets/left.png" alt="">
+          <div class="center-name">
+            <div class="top"></div>
+            <div class="info">{{nameBu}}任务大屏</div>
+            <div class="bottom"></div>
+          </div>
+          <img src="../assets/right.png" alt="">
+        </div>
         <p
           v-if="nowTimes"
         >{{nowTimes.year}}年{{nowTimes.yy}}月{{nowTimes.dd}}日 &nbsp;&nbsp;&nbsp;&nbsp; 星期{{nowTimes.week}} &nbsp;&nbsp;&nbsp; {{nowTimes.hou}}:{{nowTimes.min}}:{{nowTimes.sec}}</p>
@@ -45,7 +53,7 @@
                               <img src="../assets/address.png" alt=""> 
                               {{item.address}}
                             </div>
-                            <div class="pro-per">{{nameBu}} {{item.user_name}}</div>
+                            <div class="pro-per">{{item.role}} {{item.user_name}}</div>
                           </div>
                         </div>
                         <div class="header-img" v-if="item.head">
@@ -92,7 +100,7 @@
                               <img src="../assets/address.png" alt=""> 
                               {{item.address}}
                             </div>
-                            <div class="pro-per">{{nameBu}} {{item.user_name}}</div>
+                            <div class="pro-per">{{item.role}} {{item.user_name}}</div>
                           </div>
                         </div>
                          <div class="header-img" v-if="item.head">
@@ -136,7 +144,7 @@
                               <img src="../assets/address.png" alt=""> 
                               {{item.address}}
                             </div>
-                            <div class="pro-per">{{nameBu}} {{item.user_name}}</div>
+                            <div class="pro-per">{{item.role}} {{item.user_name}}</div>
                           </div>
                         </div>
                          <div class="header-img" v-if="item.head">
@@ -243,11 +251,17 @@ export default {
     },
 
     initWebSocket() {
-      const wsuri = `wss://www.kongfushidai.cn/wx/role/${
-        this.$route.query.id
-          ? this.$route.query.id
-          : sessionStorage.getItem("role")
-      }/?${
+       var str = ''
+      var arr = sessionStorage.getItem("role").split(',')
+      for(var i in arr){
+        if(i == arr.length-1){
+          str = str + arr[i]
+        }else{
+          str = str + arr[i] + 'A'
+        }
+      }
+      console.log(str)
+      const wsuri = `ws://192.168.0.27:8003/wx/role/${str}/?${
         localStorage.getItem("jp_token") ? localStorage.getItem("jp_token") : ""
       }`;
       this.websock = new WebSocket(wsuri); //这里面的this都指向vue
@@ -280,18 +294,32 @@ export default {
     }
   },
   mounted() {
-    this.nameBu =
-      this.$route.query.id == 1
-        ? "运营部"
-        : this.$route.query.id == 2
-        ? "产品部"
-        : this.$route.query.id == 3
-        ? "项目部"
-        : this.$route.query.id == 4
-        ? "研发中心"
-        : this.$route.query.id == 5
-        ? "市场销售"
-        : "";
+    var str = ''
+    var str2 = ''
+    var arr = sessionStorage.getItem("role").split(',')
+    for(var i in arr){
+      if(i == arr.length-1){
+        str = str + 'taskuser__user__role=' + arr[i];
+        str2 = str2 + 'user__role=' + arr[i];
+      }else{
+        str = str + 'taskuser__user__role=' + arr[i] + '&'
+        str2 = str2 + 'user__role=' + arr[i] + '&'
+      }
+    }
+     this.$http
+      .get(this.$conf.env.logoGet)
+      .then((res) => {
+        this.options = this.allbm = res.data;
+        for(var i in res.data){
+          for(var j in arr){
+            if(res.data[i].id == arr[j]){
+               this.nameBu += res.data[i].name + '&'
+            }
+          }
+        }
+        this.nameBu=this.nameBu.slice(0,this.nameBu.length-1)
+      })
+      .catch((err) => {});
     this.setNowTimes();
     this.$nextTick(() => {
       var swiper = new Swiper(".swiper-container", {
@@ -306,14 +334,10 @@ export default {
     this.$http
       .get(
         this.$conf.env.getTaskYesTo +
-          `${
-            this.$route.query.id
-              ? this.$route.query.id
-              : sessionStorage.getItem("role")
-          }`
+          `${str}`
       )
       .then(res => {
-        this.yesDayList = res.data.results;
+        this.yesDayList = res.data;
         console.log(this.yesDayList);
       })
       .catch(err => {});
@@ -322,14 +346,10 @@ export default {
     this.$http
       .get(
         this.$conf.env.getTaskRun +
-          `${
-            this.$route.query.id
-              ? this.$route.query.id
-              : sessionStorage.getItem("role")
-          }`
+          `${str2}`
       )
       .then(res => {
-        this.Running = res.data.results;
+        this.Running = res.data;
         console.log(this.Running);
       })
       .catch(err => {});
@@ -338,14 +358,10 @@ export default {
     this.$http
       .get(
         this.$conf.env.getTaskNoR +
-          `${
-            this.$route.query.id
-              ? this.$route.query.id
-              : sessionStorage.getItem("role")
-          }`
+          `${str2}`
       )
       .then(res => {
-        this.NoRunning = res.data.results;
+        this.NoRunning = res.data;
         console.log(this.NoRunning);
       })
       .catch(err => {});
@@ -430,7 +446,6 @@ export default {
     },
     ToadyTimer(news, old) {
       clearInterval(this.tiemr);
-
       this.tiemr = setInterval(() => {
         this.setNowTimes();
         // console.log("清空");
@@ -458,16 +473,39 @@ $height: 10.8rem;
   .tit {
     width: 100%;
     height: 0.7rem;
-    background: url("../assets/indextit.png") no-repeat;
     background-size: 100% 100%;
     position: relative;
-    span {
-      font-size: 0.34rem;
-      color: rgba(18, 151, 236, 1);
-      line-height: 0.56rem;
-      color: #00ffba;
-      display: block;
-      text-align: center;
+    background: #101638;
+    display: flex;
+    align-items: center;
+    // span {
+    //   font-size: 0.34rem;
+    //   color: rgba(18, 151, 236, 1);
+    //   line-height: 0.56rem;
+    //   color: #00ffba;
+    //   display: block;
+    //   text-align: center;
+    // }
+    .center-tit{
+      display: flex;
+      height: .54rem;
+      margin: 0 auto;
+      .center-name{
+        font-size: 0.34rem;
+        color: #00ffba;
+        .info{
+          line-height: .48rem;
+          margin: 0 .3rem
+        }
+      }
+      .top{
+        height: 2px;
+        background-image: linear-gradient(#0C96DA,#12DF9E);
+      }
+      .bottom{
+        height: 2px;
+        background-image: linear-gradient(#171FBB,#27CEE7);
+      }
     }
     p {
       position: absolute;
